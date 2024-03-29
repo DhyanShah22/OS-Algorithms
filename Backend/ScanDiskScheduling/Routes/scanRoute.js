@@ -5,7 +5,8 @@ const {
 } = require('../Controllers/scanScheduling')
 
 const router  = express.Router()
+const verifytoken = require('../Middleware/verifytoken')
 
-router.post( '/scan', handleRequest)
+router.post( '/scan',verifytoken, handleRequest)
 
 module.exports = router;

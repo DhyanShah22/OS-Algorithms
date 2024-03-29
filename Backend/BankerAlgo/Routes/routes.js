@@ -1,9 +1,10 @@
 const express = require('express');
 const router = express.Router();
 const controller = require('../Controllers/controller');
+const verifyTokenMiddleware = require('../Middleware/verifyTokenMiddleware');
 
-router.post('/request', controller.requestResource);
-router.post('/release', controller.releaseResource);
-router.post('/set-resources', controller.setResources); 
+router.post('/request',verifyTokenMiddleware, controller.requestResource);
+router.post('/release',verifyTokenMiddleware, controller.releaseResource);
+router.post('/set-resources',verifyTokenMiddleware, controller.setResources); 
 
 module.exports = router;
