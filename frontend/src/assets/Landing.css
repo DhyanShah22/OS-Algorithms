@@ -2,9 +2,10 @@
 
 .landing-page-container {
     display: inline;
-    max-width: 800px;
-    margin: 0 auto;
+    width: 75%; /* Set the width to 75% */
+    margin: auto auto; 
     padding: 20px;
+
   }
   
   .landing-page-container h1 {
@@ -19,6 +20,9 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
+    width: 75%;
+    margin: auto auto;
+    
   }
   
   .landing-page-container .service {
@@ -27,7 +31,16 @@
     padding: 20px;
     margin-bottom: 20px;
     border-radius: 8px;
-  }
+    border: 3px solid #000000;
+    transition: transform 0.3s ease; /* Add transition for smooth animation */
+    box-shadow: 0px 4px 8px rgba(40, 40, 40, 0); /* Add shadow effect */
+}
+
+.service:hover {
+  transform: scale(1.05); /* Scale up the card on hover */
+}
+
+
   
   .landing-page-container .service h2 {
     font-size: 24px;
