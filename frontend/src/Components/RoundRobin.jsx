@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import Plot from 'react-plotly.js';
+import '../assets/RoundRobin.css';
 
 const RoundRobin = () => {
   const [burstTime, setBurstTime] = useState('');

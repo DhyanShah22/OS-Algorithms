@@ -1,27 +1,27 @@
-// Signup.js
+// Login.js
 import React, { useState } from 'react';
 import axios from 'axios';
 
-const Signup = () => {
+const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post('/api/signup', {
+      const response = await axios.post('/api/login', {
         email,
         password
       });
-      console.log(response.data); // handle successful signup
+      console.log(response.data); // handle successful login
     } catch (error) {
-      console.error(error.response.data.error); // handle signup error
+      console.error(error.response.data.error); // handle login error
     }
   };
 
   return (
     <div>
-      <h2>Signup</h2>
+      <h2>Login</h2>
       <form onSubmit={handleSubmit}>
         <input
           type="email"
@@ -37,10 +37,10 @@ const Signup = () => {
           onChange={(e) => setPassword(e.target.value)}
           required
         />
-        <button type="submit">Signup</button>
+        <button type="submit">Login</button>
       </form>
     </div>
   );
 };
 
-export default Signup;
+export default Login;
