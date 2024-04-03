@@ -1,54 +1,77 @@
-const Page = require('../Models/Page');
-
-let memory = [];
-
-function findPageById(pageId) {
-    return memory.find(page => page.id === pageId);
-}
-
-function addPageToMemory(pageId, content) {
-    const newPage = new Page(pageId, content);
-    memory.push(newPage);
-    console.log(`New page added to memory: ${JSON.stringify(newPage)}`);
-    console.log('Current memory state:', memory); // Log memory after adding a new page
-}
-
-function updateLastAccessed(pageId) {
-    const page = findPageById(pageId);
-    if (page) {
-        page.lastAccessed = Date.now();
-    }
-}
-
-function mruPageReplacement(pageId, content) {
-    const existingPage = findPageById(pageId);
-    if (existingPage) {
-        console.log(`Page with ID ${pageId} already exists.`);
-        updateLastAccessed(pageId);
-    } else {
-        console.log(`Adding new page with ID ${pageId} to memory.`);
-        addPageToMemory(pageId, content);
-    }
-}
-
-function handlePageRequest(req, res) {
+function handlePageRequests(req, res) {
     try {
-        const { pageId, content } = req.body;
+        const { referenceString, numberOfFrames } = req.body;
 
-        console.log(`Received request to handle page with ID ${pageId}`);
+        console.log(`Received request with reference string: ${referenceString} and ${numberOfFrames} frames`);
 
-        if (!pageId || !content) {
-            throw new Error('Page ID and content are required.');
+        if (!referenceString || !numberOfFrames) {
+            throw new Error('Reference string and number of frames are required.');
         }
 
-        mruPageReplacement(pageId, content);
+        let frames = Array(Number(numberOfFrames)).fill(-1);
+        let pageFaults = 0;
+        let hits = 0;
 
-        res.json({ message: 'Page request handled successfully.' });
+        for (let pageIndex = 0; pageIndex < referenceString.length; pageIndex++) {
+            let isFound = false;
+
+            for (let i = 0; i < numberOfFrames; i++) {
+                if (frames[i] === referenceString[pageIndex]) {
+                    isFound = true;
+                    hits++;
+                    break;
+                }
+            }
+
+            if (!isFound) {
+                let hasFreeFrame = false;
+
+                for (let i = 0; i < numberOfFrames; i++) {
+                    if (frames[i] === -1) {
+                        hasFreeFrame = true;
+                        frames[i] = referenceString[pageIndex];
+                        pageFaults++;
+                        break;
+                    }
+                }
+
+                if (!hasFreeFrame) {
+                    let lastUse = Array(numberOfFrames).fill(0);
+
+                    for (let i = 0; i < numberOfFrames; i++) {
+                        for (let p = pageIndex; p >= 0; p--) {
+                            if (referenceString[p] === frames[i]) {
+                                lastUse[i] = p;
+                                break;
+                            }
+                        }
+                    }
+
+                    let victim = 0;
+                    for (let i = 0; i < numberOfFrames; i++) {
+                        if (lastUse[i] > lastUse[victim]) {
+                            victim = i;
+                        }
+                    }
+
+                    frames[victim] = referenceString[pageIndex];
+                    pageFaults++;
+                }
+            }
+        }
+
+        let hitPercent = (hits / referenceString.length) * 100;
+        let faultPercent = (pageFaults / referenceString.length) * 100;
+        console.log('Number Of Page Faults:', pageFaults);
+        console.log('Number Of Hits:', hits);
+        console.log('Hit Percentage:', hitPercent.toFixed(2) + '%');
+        console.log('Fault Percentage:', faultPercent.toFixed(2) + '%')
+        res.json({ pageFaults, hits, hitPercent, faultPercent });
     } catch (error) {
         res.status(400).json({ error: error.message });
     }
 }
 
 module.exports = {
-    handlePageRequest
+    handlePageRequests
 };

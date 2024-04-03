@@ -1,8 +1,7 @@
 const express = require('express');
 const router = express.Router();
-const { handlePageRequest } = require('../Controllers/mruController');
-const verifytoken = require('../Middleware./verifytoken')
+const { handlePageRequests } = require('../Controllers/mruController');
 
-router.post('/page',verifytoken, handlePageRequest);
+router.post('/page', handlePageRequests);
 
 module.exports = router;

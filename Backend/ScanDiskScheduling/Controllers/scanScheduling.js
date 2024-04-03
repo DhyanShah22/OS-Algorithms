@@ -13,8 +13,8 @@ function SCAN(currentPosition, direction) {
         let lesser = sortedQueue.filter(req => req < currentPosition).reverse();
         result = greater.concat(lesser);
     } else if (direction === 'left') {
-        let lesser = sortedQueue.filter(req => req < currentPosition);
-        let greater = sortedQueue.filter(req => req > currentPosition).reverse();
+        let lesser = sortedQueue.filter(req => req < currentPosition).reverse();
+        let greater = sortedQueue.filter(req => req > currentPosition);
         result = lesser.concat(greater);
     } else {
         throw new Error('Invalid direction');
