@@ -4,9 +4,10 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import './App.css';
 import LoginPage from './Pages/LoginPage';
 import SignupPage from './Pages/SignupPage';
-import LandingPage from './Pages/BankersAlgorithmPage';
-import BankersAlgorithm from './Components/BankersAlgorithm';
-import RoundRobin from './Components/RoundRobin';
+
+import BankersAlgorithm from './Pages/BankersAlgorithm';
+import RoundRobin from './Pages/RoundRobin';
+import LandingPage from './Pages/LandingPage';
 
 const App = () => {
   return (
