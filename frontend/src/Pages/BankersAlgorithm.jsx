@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import '../assets/Bankers.css'
 import successImage from '../assets/success.png';
 import failureImage from '../assets/failure.jpg';
 

@@ -1,0 +1,58 @@
+/* LandingPage.css */
+
+.landing-page-container {
+    display: inline;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+  
+  .landing-page-container h1 {
+    font-size: 36px;
+    text-align: center;
+    margin-bottom: 40px;
+    color: #333; /* Change color as desired */
+    text-transform: uppercase;
+  }
+  
+  .landing-page-container .services {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+  
+  .landing-page-container .service {
+    width: 45%; /* Adjust width as needed */
+    background-color: #f8f8f8;
+    padding: 20px;
+    margin-bottom: 20px;
+    border-radius: 8px;
+  }
+  
+  .landing-page-container .service h2 {
+    font-size: 24px;
+    margin-bottom: 10px;
+    color: #333;
+  }
+  
+  .landing-page-container .service p {
+    font-size: 16px;
+    color: #666;
+  }
+  
+  .landing-page-container .socials {
+    margin-top: 40px;
+    text-align: center;
+    padding: 20px 0;
+  }
+  
+  .landing-page-container .socials a {
+    display: inline-block;
+    margin-right: 20px;
+  }
+  
+  .landing-page-container .socials img {
+    width: 40px;
+    height: 40px;
+  }
+  

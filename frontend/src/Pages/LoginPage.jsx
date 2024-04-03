@@ -1,5 +1,10 @@
+// Login.js
 import React, { useState } from 'react';
-const LoginPage = () => {
+import axios from 'axios';
+
+import '../assets/Login.css';
+
+const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
@@ -7,39 +12,44 @@ const LoginPage = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await fetch('http://localhost:8000/api/login', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({ Email: email, Password: password })
+      const response = await axios.post('http://localhost:8000/api/login', {
+        Email: email,
+        Password: password
       });
-
-      if (!response.ok) {
-        const errorMessage = await response.text();
-        throw new Error(errorMessage || 'Something went wrong');
-      }
-
-      const data = await response.json();
-      localStorage.setItem('token', data.token); // Store token in local storage
-      window.location.href = '/landing'; // Redirect using window.location.href; // Redirect to landing page using history.push
+      console.log(email, password)
+      console.log(response.data); // handle successful login
+      window.location.href = '/landing';
     } catch (error) {
-      setError(error.message);
-      console.error('Error:', error);
+      setError(error.response.data.error); // handle login error
     }
   };
 
   return (
-    <div className="container">
+    <div className="new">
       <h1>Login</h1>
+      <div className="container">
       <form onSubmit={handleSubmit}>
-        <input type="email" placeholder="Email" value={email} onChange={(e) => setEmail(e.target.value)} />
-        <input type="password" placeholder="Password" value={password} onChange={(e) => setPassword(e.target.value)} />
+        <input
+          type="email"
+          placeholder="Email"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+          required
+        />
+        <input
+          type="password"
+          placeholder="Password"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+          required
+        />
         <button type="submit">Login</button>
         {error && <div className="error">{error}</div>}
       </form>
     </div>
+    </div>
+    
   );
 };
 
-export default LoginPage;
+export default Login;

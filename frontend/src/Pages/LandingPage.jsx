@@ -1,15 +1,17 @@
 import React from 'react';
 import { Link } from 'react-router-dom'; // Import Link from React Router
-import '../assets/Bankers.css'
+import '../assets/Landing.css'
+
+// import '../assets/Bankers.css'
 const LandingPage = () => {
   return (
-    <div className="container">
+    <div className="landing-page-container">
       <h1>Services We Offer</h1>
       <div className="services">
         {/* Use Link component for navigation */}
         <Link to="/roundRobin" className="service">
           <h2>Round Robin Algorithm</h2>
-          <p>Description of the Round Robin Algorithm service</p>
+          <p>Round Robin CPU Scheduling algorithm</p>
         </Link>
         <div className="service">
           <h2>MRU Algorithm</h2>
@@ -21,8 +23,8 @@ const LandingPage = () => {
         </div>
         <div className="service">
           <Link to="/bankers-algorithm" className="service">
-          <h2>Banker's Algorithm for Deadlock</h2>
-          <p>Description of the Banker's Algorithm service</p>
+          <h2>Bankers Algorithm for Deadlock</h2>
+          <p>Bankers Algorithm for Deadlock Avoidance.</p>
           </Link>
         </div>
       </div>
