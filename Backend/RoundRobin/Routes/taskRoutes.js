@@ -5,10 +5,9 @@ const {
     setQuantum,
     calculateProcesses
 } = require('../Controllers/taskController')
-const verifytoken = require('../Middleware/verifytoken')
 
-router.post('/process',verifytoken, addProcess);
-router.post('/process/setQuantum',verifytoken, setQuantum)
-router.get('/process/calculate',verifytoken, calculateProcesses);
+router.post('/process', addProcess);
+router.post('/process/setQuantum', setQuantum)
+router.get('/process/calculate', calculateProcesses);
 
 module.exports = router;
