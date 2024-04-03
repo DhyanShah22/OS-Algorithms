@@ -9,10 +9,13 @@ const LandingPage = () => {
       <h1>Services We Offer</h1>
       <div className="services">
         {/* Use Link component for navigation */}
-        <Link to="/roundRobin" className="service">
+        <div className='service'>
+        <Link to="/roundRobin" >
           <h2>Round Robin Algorithm</h2>
           <p>Round Robin CPU Scheduling algorithm</p>
         </Link>
+        </div>
+        
         <div className="service">
           <h2>MRU Algorithm</h2>
           <p>Description of the MRU Algorithm service</p>
@@ -22,7 +25,7 @@ const LandingPage = () => {
           <p>Description of the Scan Disk Scheduling Algorithm service</p>
         </div>
         <div className="service">
-          <Link to="/bankers-algorithm" className="service">
+          <Link to="/bankers-algorithm" >
           <h2>Bankers Algorithm for Deadlock</h2>
           <p>Bankers Algorithm for Deadlock Avoidance.</p>
           </Link>
