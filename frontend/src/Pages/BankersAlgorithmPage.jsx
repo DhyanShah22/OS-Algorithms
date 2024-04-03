@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom'; // Import Link from React Router
-
+import '../assets/Bankers.css'
 const LandingPage = () => {
   return (
     <div className="container">

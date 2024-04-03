@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-import successImage from './success.png';
-import failureImage from './failure.jpg';
+import successImage from '../assets/success.png';
+import failureImage from '../assets/failure.jpg';
 
 const BankersAlgorithm = () => {
   const [request, setRequest] = useState({ processId: '', resources: ['', '', ''] });
