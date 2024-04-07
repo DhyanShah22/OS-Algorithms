@@ -3,8 +3,9 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 
 import LoginPage from './Pages/LoginPage';
 import SignupPage from './Pages/SignupPage';
-
+import ScanDisk from './Pages/ScanDisk';
 import BankersAlgorithm from './Pages/BankersAlgorithm';
+import PageReplacementAlgorithm from './Pages/PageReplacement';
 import RoundRobin from './Pages/RoundRobin';
 import LandingPage from './Pages/LandingPage';
 
@@ -19,6 +20,9 @@ const App = () => {
           {/* Add a route for the Round Robin page */}
           <Route exact path="/bankers-algorithm" element={<BankersAlgorithm />} /> {/* Add this route */}
           <Route exact path="/roundRobin" element={<RoundRobin />} />
+          <Route exact path="/pageReplacement" element={<PageReplacementAlgorithm />} />
+          <Route exact path="/scandisk" element={<ScanDisk />} />
+
         </Routes>
       </div>
     </Router>

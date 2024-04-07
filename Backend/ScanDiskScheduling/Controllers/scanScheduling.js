@@ -1,21 +1,35 @@
 let requestQueue = [];
+let diskSize = 0;
 
 function addRequest(trackNumber) {
     requestQueue.push(trackNumber);
 }
 
-function SCAN(currentPosition, direction) {
-    let sortedQueue = requestQueue.sort((a, b) => a - b);
+async function SCAN(currentPosition, direction, diskSize, requestQueue) {
     let result = [];
-    
+
     if (direction === 'right') {
-        let greater = sortedQueue.filter(req => req > currentPosition);
-        let lesser = sortedQueue.filter(req => req < currentPosition).reverse();
-        result = greater.concat(lesser);
+        // Add requests greater than or equal to currentPosition
+        result = requestQueue.filter(req => req >= currentPosition);
+        result.sort((a, b) => a - b);
+
+        // Add diskSize if not already included and moving to the right
+        if (!result.includes(diskSize)) {
+            result.push(diskSize);
+        }
+
+        // Append requests lesser than currentPosition
+        result = result.concat(requestQueue.filter(req => req < currentPosition));
     } else if (direction === 'left') {
-        let lesser = sortedQueue.filter(req => req < currentPosition).reverse();
-        let greater = sortedQueue.filter(req => req > currentPosition);
-        result = lesser.concat(greater);
+        // Add 0 to the beginning
+        result.push(0);
+
+        // Add requests lesser than currentPosition (excluding diskSize)
+        result = result.concat(requestQueue.filter(req => req < currentPosition && req !== diskSize));
+        result.sort((a, b) => b - a);
+
+        // Prepend requests greater than or equal to currentPosition
+        result = result.concat(requestQueue.filter(req => req >= currentPosition));
     } else {
         throw new Error('Invalid direction');
     }
@@ -23,15 +37,20 @@ function SCAN(currentPosition, direction) {
     return result;
 }
 
+
 async function handleRequest(req, res) {
     try {
-        const { currentPosition, direction, newRequests } = req.body;
+        const { currentPosition, direction, newRequests, size } = req.body;
+
+        if (size && typeof size === 'number') {
+            diskSize = size;
+        }
 
         if (newRequests && Array.isArray(newRequests)) {
             newRequests.forEach(request => addRequest(request));
         }
 
-        const result = SCAN(currentPosition, direction);
+        const result = await SCAN(currentPosition, direction, diskSize, requestQueue);
 
         result.forEach(track => {
             const index = requestQueue.indexOf(track);

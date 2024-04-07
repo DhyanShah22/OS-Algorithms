@@ -17,12 +17,16 @@ const LandingPage = () => {
         </div>
         
         <div className="service">
+          <Link to="/pageReplacement">
           <h2>MRU Algorithm</h2>
           <p>Description of the MRU Algorithm service</p>
+          </Link>
         </div>
         <div className="service">
+          <Link to="/scandisk">
           <h2>Scan Disk Scheduling Algorithm</h2>
           <p>Description of the Scan Disk Scheduling Algorithm service</p>
+          </Link>
         </div>
         <div className="service">
           <Link to="/bankers-algorithm" >

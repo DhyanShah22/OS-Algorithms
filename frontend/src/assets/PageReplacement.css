@@ -1,0 +1,123 @@
+/* PageReplacementAlgorithm.css */
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.heading {
+  text-align: center;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-group {
+  margin-bottom: 15px;
+  font-size: 20px;
+}
+
+label {
+  font-weight: bold;
+}
+
+input {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+button {
+  padding: 10px 15px;
+  border: none;
+  border-radius: 4px;
+  background-color: #007bff;
+  color: #fff;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+button:hover {
+  background-color: #0056b3;
+}
+
+.results-container {
+  margin-top: 20px;
+}
+
+.results {
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  margin-top: 20px;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+thead {
+  background-color: #007bff;
+  color: #fff;
+}
+
+th,
+td {
+  padding: 10px;
+  border: 1px solid #ccc;
+  color: black;
+}
+
+.summary {
+  margin-top: 20px;
+}
+
+.summary p {
+  margin-bottom: 5px;
+  font-size: 20px;
+}
+
+.hits-and-faults {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+  transition: transform 0.3s ease;
+
+}
+
+.hits-table,
+.faults-table {
+  flex: 1;
+  margin-right: 8px;
+   padding: 20px;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  
+}
+
+.hits-table h2,
+.faults-table h2 {
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+.hits-table ul,
+.faults-table ul {
+  list-style: none;
+  padding: 0;
+}
+
+.hits-table ul li,
+.faults-table ul li {
+  margin-bottom: 5px;
+}

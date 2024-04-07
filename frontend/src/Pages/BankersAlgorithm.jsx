@@ -117,10 +117,12 @@ const BankersAlgorithm = () => {
   };
 
   return (
-    <div className='image'>
+    <div>
       <div className="container">
+
+        <div className='cards'>
         <div className="request-section">
-          <h2>Banker's Algorithm for Deadlock - Request Resources</h2>
+          <h2>Banker's Algorithm for Deadlock  - Request Resources</h2>
           <form onSubmit={handleRequestSubmit}>
             <input type="text" placeholder="Process ID" value={request.processId} onChange={(e) => setRequest({ ...request, processId: e.target.value })} />
             {[1, 2, 3].map((_, index) => (
@@ -135,6 +137,9 @@ const BankersAlgorithm = () => {
           {requestSuccess && <div className={`success success-green`}>{requestSuccess}</div>}
           {requestError && <div className={`error error-red`}>{requestError}</div>}
         </div>
+        </div>
+        
+        <div>
         <div className="release-section">
           <h2>Banker's Algorithm for Deadlock - Release Resources</h2>
           <form onSubmit={handleReleaseSubmit}>
@@ -151,6 +156,7 @@ const BankersAlgorithm = () => {
           {releaseSuccess && <div className={`success success-green`}>{releaseSuccess}</div>}
           {releaseError && <div className={`error error-red`}>{releaseError}</div>}
         </div>
+        </div>
       </div>
       <div className="set-resources">
         <button onClick={handleSetResources}>Set Resources</button>
@@ -161,7 +167,7 @@ const BankersAlgorithm = () => {
         {releaseSuccess && <img src={successImage} alt="Release Success" />}
         {releaseError && <img src={failureImage} alt="Release Failure" />}
       </div>
-    </div>
+   </div>
   );
 };
 

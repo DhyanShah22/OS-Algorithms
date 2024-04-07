@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-import Plot from 'react-plotly.js';
+//import Plot from 'react-plotly.js';
 import '../assets/RoundRobin.css';
 
 const RoundRobin = () => {
@@ -11,7 +11,7 @@ const RoundRobin = () => {
   const [completedProcesses, setCompletedProcesses] = useState([]);
   const [avgTurnaroundTime, setAvgTurnaroundTime] = useState('');
   const [avgWaitingTime, setAvgWaitingTime] = useState('');
-  const [ganttChartData, setGanttChartData] = useState([]);
+  //const [ganttChartData, setGanttChartData] = useState([]);
 
   const handleAddProcess = () => {
     const newProcess = { burstTime, arrivalTime };
@@ -64,6 +64,40 @@ const RoundRobin = () => {
       });
   };
 
+  const renderGanttChart = (completedProcesses) => {
+    if (!completedProcesses || completedProcesses.length === 0) {
+      return null; // Return null if completedProcesses is not available or empty
+    }
+  
+    const colors = ['#007bff', '#28a745', '#dc3545', '#ffc107', '#17a2b8', '#6610f2', '#28a745', '#007bff', '#dc3545', '#ffc107'];
+  
+    let bars = [];
+    completedProcesses.forEach((process, index) => {
+      const barStyle = {
+        width: `${process.burstTime * 10}px`, // Adjust width as needed
+        background: colors[index % colors.length],
+        color: '#fff',
+        textAlign: 'center',
+        border: '2px solid #333',
+        position: 'relative',
+      };
+  
+      bars.push(
+        <div key={index} style={barStyle}>
+          <div>{`P${index + 1}`}</div>
+          <div style={{ textAlign: 'left' }}>AT: {process.arrivalTime}</div>
+          <div style={{ textAlign: 'right' }}>CT: {process.completionTime}</div>
+        </div>
+      );
+    });
+  
+    return (
+      <div style={{ display: 'flex', alignItems: 'center', marginTop: '20px' }} className="gantt">
+        {bars}
+      </div>
+    );
+  };
+  
   return (
     <div className="App">
       <h1>Round Robin Algorithm</h1>
@@ -147,7 +181,8 @@ const RoundRobin = () => {
       </div>
       <div>
         <h2>Gantt Chart</h2>
-        <Plot
+        {renderGanttChart(completedProcesses)}
+        {/* <Plot
           data={ganttChartData}
           layout={{
             title: 'Gantt Chart',
@@ -163,7 +198,7 @@ const RoundRobin = () => {
             },
           }}
           config={{ responsive: true }}
-        />
+        /> */}
       </div>
     </div>
   );
