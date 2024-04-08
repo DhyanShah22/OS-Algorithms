@@ -1,11 +1,7 @@
 /* LandingPage.css */
 
 .landing-page-container {
-    display: inline;
-    width: 75%; /* Set the width to 75% */
-    margin: auto auto; 
     padding: 20px;
-
   }
   
   .landing-page-container h1 {
@@ -18,17 +14,20 @@
   
   .landing-page-container .services {
     display: flex;
-    flex-wrap: wrap;
+    flex-direction: row;
     justify-content: space-between;
     width: 75%;
     margin: auto auto;
     
+    
   }
   
   .landing-page-container .service {
-    width: 45%; /* Adjust width as needed */
+    width: 600px; /* Adjust width as needed */
+    height:400px;
     background-color: #f8f8f8;
     padding: 20px;
+    margin-left: 10px;
     margin-bottom: 20px;
     border-radius: 8px;
     border: 3px solid #000000;
@@ -53,6 +52,12 @@
     color: #666;
   }
   
+  .landing-page-container .service img {
+    width: 100%;
+    height: 200px; /* Adjust height as needed */
+    
+    border-radius: 8px;
+  }
   .landing-page-container .socials {
     margin-top: 40px;
     text-align: center;

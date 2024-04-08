@@ -15,7 +15,8 @@ const LandingPage = () => {
     <div className="landing-page-container">
       <h1>Services We Offer</h1>
       <div className="services">
-        <div className='service'>
+
+        <div className="service">
           <Link to="/roundRobin">
             <img src={RoundRobin} alt="Round Robin" />
             <h2>Round Robin Algorithm</h2>
@@ -30,7 +31,9 @@ const LandingPage = () => {
             <p>Description of the MRU Algorithm service</p>
           </Link>
         </div>
-        
+      </div>
+      <div className='services'>
+
         <div className="service">
           <Link to="/scandisk">
             <img src={scan} alt="Scan Disk Scheduling Algorithm" />
@@ -46,8 +49,7 @@ const LandingPage = () => {
             <p>Bankers Algorithm for Deadlock Avoidance.</p>
           </Link>
         </div>
-      </div>
-
+        </div>
       <div className="socials">
         <a href="https://twitter.com/KyaYaaarDhyan"><img src={Twitter} alt="Twitter" /></a>
         <a href="https://dhyanshah.hashnode.dev"><img src={Hashnode} alt="Hashnode" /></a>
