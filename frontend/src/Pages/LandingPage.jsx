@@ -36,9 +36,10 @@ const LandingPage = () => {
         </div>
       </div>
       <div className="socials">
-        <a href="https://twitter.com"><img src="twitter-icon.png" alt="Twitter" /></a>
-        <a href="https://linkedin.com"><img src="linkedin-icon.png" alt="LinkedIn" /></a>
-        <a href="https://github.com"><img src="github-icon.png" alt="GitHub" /></a>
+        <a href="https://twitter.com/KyaYaaarDhyan"><img src="Twitter.png" alt="Twitter" /></a>
+        <a href="https://dhyanshah.hashnode.dev"><img src="../assests/Hashnode.png" alt="Hashnode" /></a>
+        <a href="https://www.linkedin.com/in/dhyan-shah-42440b249/"><img src="../assets/LinkedIn.png" alt="LinkedIn" /></a>
+        <a href="https://github.com/DhyanShah22"><img src='../assets/GitHub.png' alt="GitHub" /></a>
       </div>
     </div>
   );
