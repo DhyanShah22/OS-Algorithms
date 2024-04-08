@@ -7,19 +7,24 @@ body {
     align-items: center;
     height: 100vh;
     margin: 0;
-    width: auto;
+    width: 200vh;
   }
 
+  .container {
+      height: 600px;
+      width: 200px;
+  }
   .new {
+    font-family: 'Times New Roman', Times, serif;
     display: flex;
     flex-direction: column;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     padding: 40px;
     background-color: #f9f9f9;
     border-radius: 8px;
-    max-width: 400px;
-    width: 100%;
-
+    /* max-width: 400px; */
+    height: 600px;
+    width: 1000px;
   }
   
   
@@ -37,9 +42,20 @@ body {
   label {
     font-weight: bold;
   }
+
+  .input {
+    margin: 20px;
+    height: 40px;
+    width: 600px;
+    margin-bottom: 15px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
   
   input,
   button {
+    margin: 30px;
     margin-bottom: 15px;
     padding: 10px;
     border: 1px solid #ccc;

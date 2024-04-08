@@ -53,7 +53,8 @@ const PageReplacementAlgorithm = () => {
   return (
     <div>
       <h1 className="heading">Page Replacement Algorithm</h1>
-      <div className="container">
+      <div className="mru">
+        <div className='container'>
         <form onSubmit={handleSubmit}>
           <div className="form-group">
             <label htmlFor="referenceString">Reference String:</label>
@@ -77,6 +78,7 @@ const PageReplacementAlgorithm = () => {
           </div>
           <button type="submit">Run Algorithm</button>
         </form>
+        </div>
       </div>
       
       <div className="results-container">

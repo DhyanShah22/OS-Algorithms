@@ -11,13 +11,18 @@
     flex-direction: row;
     justify-content: center; /* Center the containers horizontally */
     margin-top: 20px;
-    width:auto
+    width:auto;
 
   }
   
 .cards{
   display: flex;
   flex-direction: row;
+}
+
+input{
+  margin: 15px;
+  padding: 8px;
 }
 
 
@@ -29,7 +34,7 @@
     border: 2px solid #333;
     margin: 0 10px; /* Adjust margin as needed */
     width: 300px;
-    height: 400px
+    height: 500px
   }
   .release-section {
     padding: 12px;
@@ -37,9 +42,9 @@
     padding-left: 25px;
     border-radius: 5px;
     border: 2px solid #333;
-    margin: 0 10px; /* Adjust margin as needed */
+    margin: 0 12px; /* Adjust margin as needed */
     width: 300px;
-    height: 400px
+    height: 500px
   }
   
   .request-section h2,
